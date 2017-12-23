@@ -1,0 +1,92 @@
+﻿
+<style>
+    .combobox-menu {
+        margin-top: 5px;
+        height: 35px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    div ul li {
+        margin: 5px 5px 0 5px;
+    }
+
+        div ul li .input {
+            margin: 5px 5px 0 5px;
+            background: rgba(0, 0, 0, 0);
+            border: 1px solid #ccc;
+            padding: 7px 16px;
+            color: black;
+            border-radius: 4px;
+            height: 35px;
+        }
+
+        div ul li button {
+            margin-top: 5px;
+            height: 35px;
+            width: 35px;
+            border: 1px solid #ccc;
+        }
+</style>
+<header id="menu-header" class="clearfix">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")" style="font-weight: bold; font-size:30px">Fooddy</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                @using (Html.BeginForm("TimKiem", "Home", FormMethod.Post))
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            @Html.DropDownList("cbxAddress", new List<SelectListItem>
+                            {
+                                new SelectListItem {Text = "Hà Nội", Value = "Hà Nội"},
+                                new SelectListItem {Text = "Hồ Chí Minh", Value = "Hồ Chí Minh"},
+                                new SelectListItem {Text = "Huế", Value = "Huế"},
+                                new SelectListItem {Text = "Nam Định", Value = "Nam Định"}
+                            }, new { @class = "combobox-menu" })
+                        </li>
+                        <li class="dropdown">
+                            @Html.DropDownList("cbxStoreType", new List<SelectListItem>
+                            {
+                                new SelectListItem {Text = "Cơm trưa", Value = "Cơm trưa"},
+                                new SelectListItem {Text = "Đồ ăn", Value = "Đồ ăn"},
+                                new SelectListItem {Text = "Thức uống", Value = "Thức uống"},
+                                new SelectListItem {Text = "Tráng miệng", Value = "Tráng miệng"},
+                                new SelectListItem {Text = "Nhà hàng", Value = "Nhà Hàng"}
+                            }, new { @class = "combobox-menu" })
+                        </li>
+                        <li>@Html.TextBox("txtStoreName", "", htmlAttributes: new { @class = "input", @placeholder = "Nhập vào từ khóa cần tìm ..." })</li>
+                        <li><button type="submit" class="btnSearch"><span class="glyphicons glyphicons-search"></span></button></li>
+                    </ul>
+                }
+                @{if (ViewBag.FullName != null)
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a style="font-weight: bold; ">@ViewBag.FullName</a> </li>
+                            <li><a href="@Url.Action("Logout","Account")">Đăng Xuất</a> </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="@Url.Action("Login","Account")">Đăng Nhập</a></li>
+                        </ul>
+                    }
+
+                }
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</header>
+
+<script>
+
+</script>

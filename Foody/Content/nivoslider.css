@@ -1,0 +1,19 @@
+﻿/*--
+    slider Start
+--*/
+#slider .block {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+    #slider .block .owl-carousel {
+        padding-top: 30px;
+        position: relative;
+    }
+
+        #slider .block .owl-carousel div img {
+            width: 100%;
+            height: 220px;
+            border-radius: 5px;
+            padding-right: 0px;
+        }

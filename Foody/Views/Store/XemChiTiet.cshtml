@@ -1,0 +1,325 @@
+﻿@using Foody.Models;
+@model Store
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .store {
+        margin-top: 10px;
+        background-color: #ffffff;
+    }
+
+    div.img-storebanner img {
+        margin: 10px;
+        height: 275px;
+    }
+
+    .store-detail {
+        margin: 10px;
+        margin-left: 30px;
+        padding: 15px;
+        height: 275px;
+    }
+
+    .delevery {
+        border-top: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .stt-store {
+        color: #3ecd1b;
+    }
+
+    .light-grey {
+        color: #a1a1a1;
+    }
+
+    .btn-adding {
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        font-size: 20px;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background-color: #cf2127;
+        display: inline-block;
+        margin-left: 10px;
+        cursor: pointer !important;
+        outline: 0;
+    }
+
+    .txt-blue {
+        color: #206b9b;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .deli-box-menu-detail {
+        margin-bottom: 10px;
+        border-bottom: #f5f5f5 1px solid;
+        padding-bottom: 10px;
+        position: relative;
+    }
+
+    .deli-name-food-detail {
+        width: 480px;
+        margin-left: 15px;
+        line-height: 1.8em;
+    }
+
+    .deli-all-info-restaurant {
+        background-color: #fff;
+        width: 600px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .img-food-detail {
+        width: 60px;
+    }
+
+    .deli-container a {
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .deli-dish {
+        margin: 20px;
+    }
+
+    .deli-desc {
+        display: block;
+        padding-top: 5px;
+        line-height: 1.6em;
+        padding-right: 150px;
+    }
+
+    .deli-rating-food {
+        position: relative;
+    }
+
+    .deli-more-info {
+        position: absolute;
+        top: 21px;
+        right: 0;
+    }
+
+    .adding-food-cart {
+        float: right;
+    }
+
+    .product-price p {
+        margin: 0;
+    }
+
+    .deli-container .font16 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .unit {
+        position: relative;
+        top: 0;
+        font-size: 12px;
+        right: 0;
+    }
+
+    .product-price {
+        float: right;
+    }
+
+    .deli-title-kind-food {
+        text-transform: uppercase;
+        color: #666;
+        font-size: 14px;
+        padding: 5px 0 0;
+        margin-bottom: 20px;
+    }
+
+    .deli-more-info {
+        position: absolute;
+        top: 21px;
+        right: 0;
+    }
+
+    .micro-right1000 {
+        width: 100%;
+        float: right;
+    }
+
+    .microsite {
+        width: 100%;
+        margin: 0 auto;
+        margin-left: 5%;
+        position: relative;
+        color: #333;
+        overflow: hidden;
+    }
+
+        .microsite .micro-top-container {
+            width: 100%;
+            float: left;
+            margin: 0 auto;
+            z-index: 3000;
+        }
+
+    .micro-top-container .content {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .deli-container-bill {
+        width: 320px;
+        margin-left: 40px;
+        position: relative;
+        z-index: 10;
+        height: 250px;
+    }
+
+        .deli-container-bill > div.bill {
+            background: #fff;
+            padding: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: auto;
+        }
+
+        .deli-container-bill .row-bill {
+            border-bottom: 1px solid #f5f5f5;
+            padding: 7px 10px;
+            overflow: hidden;
+        }
+
+    .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        background-color: #fafafa;
+        padding: 0;
+        max-height: 70%;
+        width: 55%;
+        margin: auto;
+        overflow-y: auto;
+        border-radius: 2px;
+        will-change: top,opacity;
+    }
+</style>
+@section header{
+    <div class="row store">
+        <div class="img-storebanner col-md-4">
+            <img src="@Model.StoreBanner" />
+        </div>
+        <div class="col-md-8">
+            <h4 class="light-grey">@Model.StoreType</h4>
+            <h1>@Model.StoreName</h1>
+            <p><span>@Model.Address</span></p>
+            <span class="stt-store">Đang mở cửa</span>
+            <p class="light-grey ">
+                <i class="ico-deli ico-deli-time mar-right3"></i>
+                <span style="position: relative; top: -3px; font-size: 15px;">@Model.OpenDoor - @Model.CloserDoor</span>
+                <span style="margin: 0 10px;"></span>
+            </p>
+            <div class="row delevery">
+                <div class="col-lg-4">
+                    <p class="light-grey"> PHÍ SHIP</p>
+                    <p>@Model.ShippingFee vnđ/km</p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="light-grey"> DỊCH VỤ</p>
+                    <p>@Model.ServiceCharge vnđ</p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="light-grey"> GIAO HÀNG</p>
+                    <p>@Model.Manner </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@{
+    if (ViewBag.StoreAdmin == 1)
+    {
+        @section menuleft{
+            @Html.Action("MenuStoreAdmin", "Store", new { StoreID = Model.StoreID })
+        }
+    }
+    else
+    {
+        @section menuleft{
+            @Html.Action("MenuLeft", "Store")
+        }
+    }
+}
+<div class="micro-right1000">
+    <section class="microsite" style="clear: both; position: static;">
+        <div class="micro-top-container">
+            <div class="content">
+                <div id="microMap" ng-controller="MicrositeMapCtr" bind-unsafe-html="HtmlForm" ng-init="Init({ResId:'179668'})" class="ng-scope"><div class="micro-map-popup ng-scope" style="display:none;" id="pp-micro-map"><label class="map-close"></label><div class="map-loading"></div></div></div>
+                <!--Start Micro content-->
+                <div class="micro-main-content" style="min-height: 500px;">
+                    <div class="leftbox" style="margin: 0 auto;">
+                        <div class="micro-left">
+                            <div style="overflow: hidden; min-height: 500px;">
+                                @Html.Action("StoreDetail", "Store", new { StoreID = Model.StoreID })
+
+                                <div class="deli-container-bill pull-left">
+                                    <div class="bill" style="border: none; top: 0px;">
+                                        <div class="row-bill deli-clearfix">
+                                            <a href="javascript:void(0);" ng-click="" class="cart-stats">
+                                                <span id="cart-qty" class="bold font12 ng-binding" ng-bind="totalQty">0</span>
+                                                <span class="font12">phần</span>
+                                            </a>
+                                            <a href="javascript:void(0)" class="btn-reset" ng-click="clearCart()">Reset</a>
+                                        </div><div style="max-height: 300px; overflow-y: auto;">
+                                            <!-- ngRepeat: item in OrderDish -->
+                                        </div><div>
+                                            <div class="row-bill-grey deli-clearfix">
+                                                <span>Cộng</span>
+                                                <span class="bold pull-right ng-binding">0<span class="unit">đ</span></span>
+                                            </div>
+                                            <div class="row-bill-grey clearfix">
+                                                <span>Phí vận chuyển (Est.)</span>
+                                                <span class="pull-right">
+                                                    <span class="ng-binding">5,000đ/km</span>
+                                                </span>
+                                            </div>
+                                            <div class="row-bill-grey clearfix ng-hide" ng-show="servicePercent > 0">
+                                                <span>Phục vụ: <span class="bold ng-binding">0%</span></span>
+                                                <span class="pull-right ng-binding">0<span class="unit">đ</span></span>
+                                            </div>
+                                            <div class="row-bill-grey clearfix">
+                                                <span class="deli-code pull-left" style="width: 96%;">Nhập mã khuyến mãi ở bước hoàn tất </span>
+                                            </div>
+                                            <div class="row-bill-grey clearfix">
+                                                <span class="font16 bold">Tạm tính</span>
+                                                <span class="pull-right font16 txt-blue bold ng-hide ng-binding" style="color: #085ffb;" ng-show="OrderValue.value > 0">0<span class="unit">đ</span></span>
+                                                <span class="pull-right font16 txt-blue bold" style="color: #085ffb;" ng-hide="OrderValue.value > 0">0<span class="unit">đ</span></span>
+                                            </div>
+                                            <a href="javascript:void(0)" class="btn-book-first" ng-click="checkout();" ng-show="!IsClosed">
+                                                <i class="fa fa-check-circle"></i>
+                                                Đặt Trước
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

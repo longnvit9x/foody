@@ -1,0 +1,21 @@
+﻿
+<link href="~/Content/nivoslider.css" rel="stylesheet" />
+<div class="jg-slider1">
+    <div class="big">
+        <ul>
+            <li class="current"><a href="@Url.Action("XemChiTiet", "Store", new {StoreID=@Model[0].StoreID })"><img src="@Model[0].StoreBanner"></a></li>
+            <li><a href="@Url.Action("XemChiTiet", "Store", new {StoreID=@Model[1].StoreID })"><img src="@Model[1].StoreBanner"></a></li>
+            <li><a href="@Url.Action("XemChiTiet", "Store", new {StoreID=@Model[2].StoreID })"><img src="@Model[2].StoreBanner"></a></li>
+            <li><a href="@Url.Action("XemChiTiet", "Store", new {StoreID=@Model[3].StoreID })"><img src="@Model[3].StoreBanner"></a></li>
+        </ul>
+    </div>
+    <div class="small">
+        <ul>
+            <li class="current"><img src="@Model[0].StoreBanner"></li>
+            <li><img src="@Model[1].StoreBanner"></li>
+            <li><img src="@Model[2].StoreBanner"></li>
+            <li><img src="@Model[3].StoreBanner"></li>
+        </ul>
+    </div>
+</div>
+<div style="clear:both"></div>

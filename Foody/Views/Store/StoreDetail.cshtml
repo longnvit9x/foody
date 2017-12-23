@@ -1,0 +1,52 @@
+﻿@using Foody.Models
+@model List<Food>
+
+<div class="deli-container ng-scope">
+    <div class="deli-all-info-restaurant pull-left">
+        <div class="deli-dish" id="deligroupdish-14731">
+            <p class="deli-title-kind-food">
+                <span>Thực đơn</span>
+            </p>
+            @{int i = 0; }
+            @foreach (var item in Model)
+            {
+                i++;
+
+                <div class="deli-box-menu-detail clearfix">
+                    <div class="img-food-detail pull-left">
+                        <a href="#cb_0" class="inline cboxElement">
+                            <img src="@item.FoodImage" alt="@item.FoodName" width="60" height="60" onclick="">
+                        </a>
+                    </div>
+                    <div class="deli-name-food-detail pull-left">
+                        <a class="deli-title-name-food" href="javascript:void(0);" ng-click="addToCartFromMenu(164654, currentDishPrice, currentDishPrice, 1, $event)">
+                            <h3 style="font-size: 16px; margin: 0px; padding: 0px; line-height: 1.3em; font-weight: bold;">
+                                @item.FoodName
+                            </h3>
+                        </a>
+                        <span class="deli-desc"></span>
+                        <div class="deli-rating-food">
+                        </div>
+                        <p style="margin: 0; color: #a1a1a1; font-size: 11px;">
+                            Đã được đặt <span style="color: #464646; font-weight: bold;">1261</span> lần
+                        </p>
+                    </div>
+                    <div class="deli-more-info">
+                        <div class="adding-food-cart" ng-show="!IsClosed">
+                            <span class="btn-adding" ng-click="addToCartFromMenu(164654, currentDishPrice, currentDishPrice, 1, $event)">+</span>
+                        </div>
+                        <div class="product-price">
+                            <p class="current-price">
+                                <span class="txt-blue font16 bold">
+                                   @item.Price
+                                </span>
+                                <span class="unit">đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

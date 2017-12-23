@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b36251c6feb2489e8d2d822ef12081f1" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodDeliveryModel.Category" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.Customer" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.Food" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.FoodSize" Width="1.5" PointX="9.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.FoodType" Width="1.5" PointX="9.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.Invoice" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.InvoiceDetail" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.Store" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.StoreImage" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.StoreSale" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.StoreType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_Category_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_Food_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_DirectCart_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_Store_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_DetailCart_Food" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_FoodSize_Food" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_FoodType_Food" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_DetailDirect_DirectCart" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_DirectCart_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_StoreImage_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodDeliveryModel.FK_StoreSale_Store" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodDeliveryModel.User" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

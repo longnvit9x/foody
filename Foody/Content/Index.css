@@ -1,0 +1,29 @@
+﻿body {
+    height: 100%;
+}
+
+.fixed-top {
+    z-index: 1030;
+    position: sticky;
+    right: 0;
+    left: 0;
+    border-width: 0 0 1px;
+}
+
+
+.panel-collapse > .list-group .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.panel-collapse > .list-group .list-group-item {
+    border-width: 1px 0;
+}
+
+.panel-collapse > .list-group {
+    margin-bottom: 0;
+}
+
+.panel-collapse .list-group-item {
+    border-radius: 0;
+}
